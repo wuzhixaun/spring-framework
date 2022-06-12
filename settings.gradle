@@ -2,13 +2,18 @@ pluginManagement {
 	repositories {
 		mavenCentral()
 		gradlePluginPortal()
+		//新增的阿里云仓库地址的配置
+		maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+		//新增的阿里云仓库地址的配置
+		maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+		//spring源码中已有的配置
 		maven { url "https://repo.spring.io/release" }
 	}
 }
 
 plugins {
 	id "com.gradle.enterprise" version "3.9"
-	id "io.spring.ge.conventions" version "0.0.9"
+	// id "io.spring.ge.conventions" version "0.0.9"
 }
 
 include "spring-aop"
@@ -56,3 +61,5 @@ settings.gradle.projectsLoaded {
 		}
 	}
 }
+include 'wuzx-test'
+

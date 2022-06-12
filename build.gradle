@@ -248,6 +248,10 @@ configure(allprojects) { project ->
 			cacheChangingModulesFor 0, "seconds"
 		}
 		repositories {
+			//新增的阿里云仓库地址的配置
+			maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+			//新增的阿里云仓库地址的配置
+			maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
 			mavenCentral()
 			maven { url "https://repo.spring.io/libs-spring-framework-build" }
 			maven { url "https://repo.spring.io/milestone"}
@@ -321,7 +325,7 @@ configure([rootProject] + javaProjects) { project ->
 		// JSR-305 only used for non-required meta-annotations
 		compileOnly("com.google.code.findbugs:jsr305")
 		testCompileOnly("com.google.code.findbugs:jsr305")
-		checkstyle("io.spring.javaformat:spring-javaformat-checkstyle:0.0.31")
+//		checkstyle("io.spring.javaformat:spring-javaformat-checkstyle:0.0.31")
 	}
 
 	ext.javadocLinks = [
