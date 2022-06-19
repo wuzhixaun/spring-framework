@@ -1,11 +1,12 @@
 package com.wuzx.bean;
 
 
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
-public class Cat {
+//@Component
+public class Cat implements InitializingBean {
 
     public Cat() {
         System.out.println("cat 创建");
@@ -32,5 +33,17 @@ public class Cat {
         return "Cat{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+
+    // 设置属性之后，
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Cat afterPropertiesSet...");
+    }
+
+
+    public void myInitMethod() {
+        System.out.println("我的自定义方法");
     }
 }
