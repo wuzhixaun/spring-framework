@@ -1,6 +1,7 @@
 package com.wuzx.bean;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -12,8 +13,8 @@ import org.springframework.stereotype.Component;
  * 实现xxxAware 注入相应的组件
  * 其实原理就是利用BeanPost
  */
-//@Component
-public class Person implements ApplicationContextAware, MessageSourceAware {
+@Component
+public class Person implements ApplicationContextAware, MessageSourceAware, InitializingBean {
 
 
     public Person() {
@@ -52,10 +53,9 @@ public class Person implements ApplicationContextAware, MessageSourceAware {
     }
 
 
-    private Cat cat;
 
-    @Autowired
-    private void setCat(Cat cat) {
-        this.cat = cat;
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("person afterPropertiesSet");
     }
 }

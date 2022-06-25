@@ -253,7 +253,7 @@ public abstract class AbstractNestablePropertyAccessor extends AbstractPropertyA
 		if (tokens == null) {
 			String propertyName = pv.getName();
 			AbstractNestablePropertyAccessor nestedPa;
-			try {
+			try {// 级联属性赋值都可以
 				nestedPa = getPropertyAccessorForPropertyPath(propertyName);
 			}
 			catch (NotReadablePropertyException ex) {

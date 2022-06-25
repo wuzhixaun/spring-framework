@@ -12,19 +12,7 @@ public class MyInstantiationAwareBeanPostProcessor implements InstantiationAware
         System.out.println("MyInstantiationAwareBeanPostProcessor");
     }
 
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println(" MyInstantiationAwareBeanPostProcessor postProcessBeforeInitialization");
-        return InstantiationAwareBeanPostProcessor.super.postProcessBeforeInitialization(bean, beanName);
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println(" MyInstantiationAwareBeanPostProcessor postProcessAfterInitialization");
-        return InstantiationAwareBeanPostProcessor.super.postProcessAfterInitialization(bean, beanName);
-    }
-
-    // 初始化之前进行后置处理
+    // 初始化之前进行后置处理，如果我们自己创建了对象，则Spring不会创建
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
         System.out.println(" MyInstantiationAwareBeanPostProcessor postProcessBeforeInstantiation");
@@ -37,6 +25,7 @@ public class MyInstantiationAwareBeanPostProcessor implements InstantiationAware
         return InstantiationAwareBeanPostProcessor.super.postProcessAfterInstantiation(bean, beanName);
     }
 
+    // 可以利用这个方法解析自定义注解
     @Override
     public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
         System.out.println(" MyInstantiationAwareBeanPostProcessor postProcessProperties");

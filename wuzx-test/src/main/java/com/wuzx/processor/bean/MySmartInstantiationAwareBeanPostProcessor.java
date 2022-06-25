@@ -15,35 +15,6 @@ public class MySmartInstantiationAwareBeanPostProcessor implements SmartInstanti
         System.out.println("MySmartInstantiationAwareBeanPostProcessor...");
     }
 
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("MySmartInstantiationAwareBeanPostProcessor postProcessBeforeInitialization");
-        return SmartInstantiationAwareBeanPostProcessor.super.postProcessBeforeInitialization(bean, beanName);
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("MySmartInstantiationAwareBeanPostProcessor postProcessAfterInitialization");
-        return SmartInstantiationAwareBeanPostProcessor.super.postProcessAfterInitialization(bean, beanName);
-    }
-
-    @Override
-    public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
-        System.out.println("MySmartInstantiationAwareBeanPostProcessor postProcessBeforeInstantiation");
-        return SmartInstantiationAwareBeanPostProcessor.super.postProcessBeforeInstantiation(beanClass, beanName);
-    }
-
-    @Override
-    public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
-        System.out.println("MySmartInstantiationAwareBeanPostProcessor postProcessAfterInstantiation ==》beanName:" + beanName + "---" + bean);
-        return SmartInstantiationAwareBeanPostProcessor.super.postProcessAfterInstantiation(bean, beanName);
-    }
-
-    @Override
-    public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
-        System.out.println("MySmartInstantiationAwareBeanPostProcessor postProcessProperties  ==》beanName:" + beanName + "---" + bean);
-        return SmartInstantiationAwareBeanPostProcessor.super.postProcessProperties(pvs, bean, beanName);
-    }
 
     // 预测bean的类型，最后一次改变组件类型
     @Override

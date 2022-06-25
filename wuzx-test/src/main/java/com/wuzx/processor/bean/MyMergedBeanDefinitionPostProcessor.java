@@ -14,18 +14,6 @@ public class MyMergedBeanDefinitionPostProcessor implements MergedBeanDefinition
     }
 
     @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("MyMergedBeanDefinitionPostProcessor postProcessBeforeInitialization");
-        return MergedBeanDefinitionPostProcessor.super.postProcessBeforeInitialization(bean, beanName);
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("MyMergedBeanDefinitionPostProcessor postProcessAfterInitialization");
-        return MergedBeanDefinitionPostProcessor.super.postProcessAfterInitialization(bean, beanName);
-    }
-
-    @Override
     public void postProcessMergedBeanDefinition(RootBeanDefinition beanDefinition, Class<?> beanType, String beanName) {
         System.out.println("MyMergedBeanDefinitionPostProcessor postProcessMergedBeanDefinition");
     }
