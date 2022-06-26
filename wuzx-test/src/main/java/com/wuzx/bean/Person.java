@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * 实现xxxAware 注入相应的组件
  * 其实原理就是利用BeanPost
  */
-@Component
+//@Component
 public class Person implements ApplicationContextAware, MessageSourceAware, InitializingBean {
 
 

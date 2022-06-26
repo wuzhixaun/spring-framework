@@ -154,7 +154,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	protected void addSingletonFactory(String beanName, ObjectFactory<?> singletonFactory) {
 		Assert.notNull(singletonFactory, "Singleton factory must not be null");
 		synchronized (this.singletonObjects) {
-			if (!this.singletonObjects.containsKey(beanName)) {
+			if (!this.singletonObjects.containsKey(beanName)) { // 当前对象未创建
 				this.singletonFactories.put(beanName, singletonFactory);
 				this.earlySingletonObjects.remove(beanName);
 				this.registeredSingletons.add(beanName);
@@ -177,11 +177,11 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * @return the registered singleton object, or {@code null} if none found
 	 */
 	@Nullable
-	protected Object getSingleton(String beanName, boolean allowEarlyReference) {
+	protected Object  getSingleton(String beanName, boolean allowEarlyReference) {
 		// Quick check for existing instance without full singleton lock
         // 先检查单例池中有没有
 		Object singletonObject = this.singletonObjects.get(beanName); // 一级缓存
-        // 如果没有，并且这个bean对象不是正在创建
+        // 如果没有，并且这个bean对象是正在创建
 		if (singletonObject == null && isSingletonCurrentlyInCreation(beanName)) {
 			singletonObject = this.earlySingletonObjects.get(beanName); // 二级缓存
 			if (singletonObject == null && allowEarlyReference) {
